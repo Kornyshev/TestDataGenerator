@@ -1,14 +1,16 @@
 package com.epam.TestDataManagementTool.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Getter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "Office")
@@ -17,7 +19,7 @@ public class Office {
 
     @Id
     @Column(name = "officeCode", nullable = false)
-    private String officeCode;
+    public String officeCode;
     @Column(name = "city", nullable = false)
     public String city;
     @Column(name = "phone", nullable = false)
@@ -34,5 +36,8 @@ public class Office {
     public String postalCode;
     @Column(name = "territory", nullable = false)
     public String territory;
+
+    @OneToMany(mappedBy = "employeeNumber")
+    public Set<Employee> employees = new HashSet<>();
 
 }

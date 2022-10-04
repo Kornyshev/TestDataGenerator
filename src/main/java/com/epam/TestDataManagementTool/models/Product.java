@@ -2,12 +2,16 @@ package com.epam.TestDataManagementTool.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "Product")
@@ -16,10 +20,11 @@ public class Product {
 
     @Id
     @Column(name = "productCode", nullable = false)
-    private int productCode;
+    public int productCode;
     @Column(name = "productName", nullable = false)
     public String productName;
-    @Column(name = "productLine", nullable = false)
+    @ManyToOne()
+    @JoinColumn(name = "productLine", referencedColumnName = "productLine", nullable = false, foreignKey = @ForeignKey(name = "fk_products_to_line"))
     public ProductLine productLine;
     @Column(name = "productScale", nullable = false)
     public String productScale;
@@ -33,5 +38,8 @@ public class Product {
     public BigDecimal buyPrice;
     @Column(name = "MSRP", nullable = false)
     public BigDecimal MSRP;
+
+    @OneToMany(mappedBy = "productCode")
+    public Set<OrderDetails> orderDetails = new HashSet<>();
 
 }
