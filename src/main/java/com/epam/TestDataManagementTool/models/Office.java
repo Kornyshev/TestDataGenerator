@@ -1,5 +1,6 @@
 package com.epam.TestDataManagementTool.models;
 
+import com.github.javafaker.Faker;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,25 +18,33 @@ import java.util.Set;
 @Table(name = "Offices")
 public class Office {
 
+    private static final Faker FAKER = Faker.instance();
+
     @Id
     @Column(name = "officeCode", nullable = false)
     public String officeCode;
     @Column(name = "city", nullable = false)
-    public String city;
+    @Builder.Default
+    public String city = FAKER.address().city();
     @Column(name = "phone", nullable = false)
-    public String phone;
+    @Builder.Default
+    public String phone = FAKER.phoneNumber().phoneNumber();
     @Column(name = "addressLine1", nullable = false)
-    public String addressLine1;
+    @Builder.Default
+    public String addressLine1 = FAKER.address().fullAddress();
     @Column(name = "addressLine2")
     public String addressLine2;
     @Column(name = "state")
     public String state;
     @Column(name = "country", nullable = false)
-    public String country;
+    @Builder.Default
+    public String country = FAKER.address().country();
     @Column(name = "postalCode", nullable = false)
-    public String postalCode;
+    @Builder.Default
+    public String postalCode = FAKER.address().zipCode();
     @Column(name = "territory", nullable = false)
-    public String territory;
+    @Builder.Default
+    public String territory = FAKER.address().state();
 
     @OneToMany(mappedBy = "employeeNumber")
     public Set<Employee> employees = new HashSet<>();

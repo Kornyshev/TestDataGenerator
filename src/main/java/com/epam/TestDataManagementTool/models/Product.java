@@ -1,5 +1,6 @@
 package com.epam.TestDataManagementTool.models;
 
+import com.github.javafaker.Faker;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,26 +19,35 @@ import java.util.Set;
 @Table(name = "Products")
 public class Product {
 
+    private static final Faker FAKER = Faker.instance();
+
     @Id
     @Column(name = "productCode", nullable = false)
     public int productCode;
     @Column(name = "productName", nullable = false)
-    public String productName;
+    @Builder.Default
+    public String productName = FAKER.lorem().fixedString(20);
     @ManyToOne()
     @JoinColumn(name = "productLine", referencedColumnName = "productLine", nullable = false, foreignKey = @ForeignKey(name = "fk_products_to_line"))
     public ProductLine productLine;
     @Column(name = "productScale", nullable = false)
-    public String productScale;
+    @Builder.Default
+    public String productScale = FAKER.lorem().fixedString(30);
     @Column(name = "productVendor", nullable = false)
-    public String productVendor;
+    @Builder.Default
+    public String productVendor = FAKER.company().name();
     @Column(name = "productDescription", nullable = false)
-    public String productDescription;
+    @Builder.Default
+    public String productDescription = FAKER.lorem().fixedString(30);
     @Column(name = "quantityInStock", nullable = false)
-    public short quantityInStock;
+    @Builder.Default
+    public short quantityInStock = (short) FAKER.random().nextInt(256);
     @Column(name = "buyPrice", nullable = false)
-    public BigDecimal buyPrice;
+    @Builder.Default
+    public BigDecimal buyPrice = new BigDecimal(FAKER.random().nextInt(1000, 10000));
     @Column(name = "MSRP", nullable = false)
-    public BigDecimal MSRP;
+    @Builder.Default
+    public BigDecimal MSRP = new BigDecimal(FAKER.random().nextInt(1000, 10000));
 
     @OneToMany(mappedBy = "productCode")
     public Set<OrderDetails> orderDetails = new HashSet<>();

@@ -1,5 +1,6 @@
 package com.epam.TestDataManagementTool.models;
 
+import com.github.javafaker.Faker;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,17 +18,23 @@ import java.util.Set;
 @Table(name = "Employees")
 public class Employee {
 
+    private static final Faker FAKER = Faker.instance();
+
     @Id
     @Column(name = "employeeNumber", nullable = false)
     public int employeeNumber;
     @Column(name = "lastName", nullable = false)
-    public String lastName;
+    @Builder.Default
+    public String lastName = FAKER.name().lastName();
     @Column(name = "firstName", nullable = false)
-    public String firstName;
+    @Builder.Default
+    public String firstName = FAKER.name().firstName();
     @Column(name = "extension", nullable = false)
-    public String extension;
+    @Builder.Default
+    public String extension = FAKER.lorem().fixedString(100);
     @Column(name = "email", nullable = false)
-    public String email;
+    @Builder.Default
+    public String email = FAKER.internet().emailAddress();
     @ManyToOne()
     @JoinColumn(name = "officeCode", referencedColumnName = "officeCode", nullable = false, foreignKey = @ForeignKey(name = "fk_employees_to_office"))
     public Office officeCode;
@@ -35,7 +42,8 @@ public class Employee {
     @JoinColumn(name = "reportsTo", referencedColumnName = "employeeNumber", foreignKey = @ForeignKey(name = "fk_employees_report_to_employee"))
     public Employee reportsTo;
     @Column(name = "jobTitle", nullable = false)
-    public String jobTitle;
+    @Builder.Default
+    public String jobTitle = FAKER.job().title();
 
     @OneToMany(mappedBy = "salesRepEmployeeNumber")
     public Set<Customer> customers = new HashSet<>();
