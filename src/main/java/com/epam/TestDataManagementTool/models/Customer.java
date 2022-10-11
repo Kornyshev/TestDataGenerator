@@ -2,10 +2,7 @@ package com.epam.TestDataManagementTool.models;
 
 import com.github.javafaker.Faker;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -15,6 +12,7 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Entity(name = "Customer")
 @Table(name = "Customers")
 public class Customer {
@@ -23,7 +21,7 @@ public class Customer {
 
     @Id
     @Column(name = "customerNumber", nullable = false)
-    public int customerNumber = 123;
+    public int customerNumber;
     @Column(name = "customerName", nullable = false)
     @Builder.Default
     public String customerName = FAKER.name().firstName();

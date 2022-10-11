@@ -2,10 +2,7 @@ package com.epam.TestDataManagementTool.models;
 
 import com.github.javafaker.Faker;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.sql.Date;
 import java.util.concurrent.TimeUnit;
@@ -14,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Entity(name = "Order")
 @Table(name = "Orders")
 public class Order {

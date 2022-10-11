@@ -10,4 +10,9 @@ public class DataUtils {
         return System.currentTimeMillis();
     }
 
+    @SneakyThrows
+    public static int timestampInt() {
+        return Math.abs((int) timestamp());
+    }
+
 }
