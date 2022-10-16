@@ -1,4 +1,4 @@
-package com.epam.TestDataManagementTool.models;
+package com.something.TestDataManagementTool.models.entities;
 
 import com.github.javafaker.Faker;
 import jakarta.persistence.*;

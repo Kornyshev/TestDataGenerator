@@ -1,5 +1,6 @@
-package com.epam.TestDataManagementTool.models;
+package com.something.TestDataManagementTool.models;
 
+import com.something.TestDataManagementTool.models.entities.Customer;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

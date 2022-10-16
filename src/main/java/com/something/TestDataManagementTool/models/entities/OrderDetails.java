@@ -1,5 +1,6 @@
-package com.epam.TestDataManagementTool.models;
+package com.something.TestDataManagementTool.models.entities;
 
+import com.something.TestDataManagementTool.models.OrderDetailsId;
 import com.github.javafaker.Faker;
 import jakarta.persistence.*;
 import lombok.*;

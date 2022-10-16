@@ -1,4 +1,4 @@
-package com.epam.TestDataManagementTool.models;
+package com.something.TestDataManagementTool.models;
 
 import lombok.Getter;
 

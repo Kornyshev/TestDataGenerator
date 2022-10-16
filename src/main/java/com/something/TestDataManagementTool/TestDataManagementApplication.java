@@ -1,4 +1,4 @@
-package com.epam.TestDataManagementTool;
+package com.something.TestDataManagementTool;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

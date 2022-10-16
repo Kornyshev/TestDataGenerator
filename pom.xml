@@ -12,7 +12,7 @@
 
     <groupId>me.kornyshev</groupId>
     <artifactId>TDM-Tool</artifactId>
-    <version>0.0.1</version>
+    <version>1.0</version>
     <name>TDM-Tool</name>
     <description>Demo project for Spring Boot</description>
 

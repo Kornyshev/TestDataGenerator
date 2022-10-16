@@ -1,5 +1,6 @@
-package com.epam.TestDataManagementTool.models;
+package com.something.TestDataManagementTool.models.entities;
 
+import com.something.TestDataManagementTool.models.PaymentId;
 import com.github.javafaker.Faker;
 import jakarta.persistence.*;
 import lombok.*;
@@ -29,7 +30,7 @@ public class Payment {
     public int checkNumber;
     @Column(name = "paymentDate", nullable = false)
     @Builder.Default
-    public Date paymentDate = Date.valueOf(FAKER.date().past(365, TimeUnit.DAYS).toString());
+    public Date paymentDate = new Date(FAKER.date().past(365, TimeUnit.DAYS).getTime());
     @Column(name = "amount", nullable = false)
     @Builder.Default
     public BigDecimal amount = new BigDecimal(FAKER.random().nextInt(1000, 10000));

@@ -1,5 +1,6 @@
-package com.epam.TestDataManagementTool.models;
+package com.something.TestDataManagementTool.models.entities;
 
+import com.something.TestDataManagementTool.models.OrderStatus;
 import com.github.javafaker.Faker;
 import jakarta.persistence.*;
 import lombok.*;
@@ -23,10 +24,10 @@ public class Order {
     public int orderNumber;
     @Column(name = "orderDate", nullable = false)
     @Builder.Default
-    public Date orderDate = Date.valueOf(FAKER.date().past(365, TimeUnit.DAYS).toString());
+    public Date orderDate = new Date(FAKER.date().past(365, TimeUnit.DAYS).getTime());
     @Column(name = "requiredDate", nullable = false)
     @Builder.Default
-    public Date requiredDate = Date.valueOf(FAKER.date().past(365, TimeUnit.DAYS).toString());
+    public Date requiredDate = new Date(FAKER.date().past(365, TimeUnit.DAYS).getTime());
     @Column(name = "shippedDate")
     public Date shippedDate;
     @Column(name = "status", nullable = false)

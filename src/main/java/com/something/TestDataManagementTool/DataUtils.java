@@ -1,4 +1,4 @@
-package com.epam.TestDataManagementTool;
+package com.something.TestDataManagementTool;
 
 import lombok.SneakyThrows;
 
