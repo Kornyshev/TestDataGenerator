@@ -1,8 +1,5 @@
 package com.something.TestDataManagementTool.controllers;
 
-import com.epam.TestDataManagementTool.db.*;
-import com.epam.TestDataManagementTool.models.*;
-import com.epam.TestDataManagementTool.models.entities.*;
 import com.github.javafaker.Faker;
 import com.something.TestDataManagementTool.DataUtils;
 import com.something.TestDataManagementTool.db.*;
